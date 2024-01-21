@@ -3,6 +3,11 @@ type Query {
     job(id: ID!): Job
 }
 
+
+type Mutation {
+    createJob(title: String, description: String): Job
+}
+
 type Job {
     id: ID!
     title: String

@@ -34,3 +34,15 @@ export async function getJob(id) {
     const data = await client.request(query, {id});
     return data;
 }
+
+export async function createJob({title, description}) {
+  const query = gql`
+    mutation($title: String, $description: String) {
+      createJob(title: $title, description: $description) {
+        title
+        description
+      }
+    } `;
+  const data = await client.request(query, {title,description});
+  return data;
+}

@@ -1,4 +1,4 @@
-import {getJobs, getCompany, getJob} from './db/jobs.js';
+import {getJobs, getCompany, getJob, createJob} from './db/jobs.js';
 
 export const resolvers = {
     Query: {
@@ -12,8 +12,15 @@ export const resolvers = {
     },
     Job: {
         company: async (job) => {
-           return await getCompany();
+           return await getCompany(job.companyId);
         },
         date: (job) =>  job.date
+    },
+    Mutation: {
+        createJob: async (_root, {title,description}) => {
+            const companyId = 1;
+            return await createJob({companyId,title, description});
+
+        }
     }
 }

@@ -24,8 +24,21 @@ export async function job(id) {
 }
 
 export async function getCompany(id) {
-    const company = await prisma.company.findMany({
+    const company = await prisma.company.findFirst({
         where : {id}
     });
     return company;
+}
+
+export async function createJob({companyId,title, description}) {
+
+    const job = {
+        companyId,
+        title, 
+        description,
+        date: new Date().toDateString()
+    }
+
+    const response = await prisma.jobob.create({data:job});
+    return response;
 }
