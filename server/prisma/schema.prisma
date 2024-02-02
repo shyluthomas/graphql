@@ -15,7 +15,7 @@ model jobob {
   title String
   description String
   date String
-  company Company @relation(fields: [companyId], references: [id])
+  company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   companyId Int
 }
 model Company {

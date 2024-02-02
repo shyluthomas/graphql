@@ -42,3 +42,15 @@ export async function createJob({companyId,title, description}) {
     const response = await prisma.jobob.create({data:job});
     return response;
 }
+
+export async function deleteJob({id}) {
+    const job = await prisma.jobob.findFirst({
+        where : {id: parseInt(id)}
+    });
+    if(job) {
+        await prisma.jobob.delete({
+            where : {id: parseInt(id)}
+        });
+    }
+    return job;
+}

@@ -6,6 +6,7 @@ type Query {
 
 type Mutation {
     createJob(title: String, description: String): Job
+    deleteJob(id: ID!): Job
 }
 
 type Job {

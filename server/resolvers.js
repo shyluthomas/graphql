@@ -1,4 +1,4 @@
-import {getJobs, getCompany, getJob, createJob} from './db/jobs.js';
+import {getJobs, getCompany, getJob, createJob, deleteJob} from './db/jobs.js';
 
 export const resolvers = {
     Query: {
@@ -20,6 +20,11 @@ export const resolvers = {
         createJob: async (_root, {title,description}) => {
             const companyId = 1;
             return await createJob({companyId,title, description});
+
+        },
+        deleteJob: async (_root, id) => {
+            const job = await deleteJob(id);
+            return job;
 
         }
     }

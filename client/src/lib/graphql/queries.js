@@ -46,3 +46,15 @@ export async function createJob({title, description}) {
   const data = await client.request(query, {title,description});
   return data;
 }
+
+export async function deleteJob(id) {
+  const query = gql`
+    mutation($id: ID!) {
+      deleteJob(id: $id) {
+        title
+        description
+      }
+    } `;
+  const data = await client.request(query, {id});
+  return data;
+}
