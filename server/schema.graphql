@@ -1,6 +1,7 @@
 type Query {
     jobs: [Job]
     job(id: ID!): Job
+    jobpages(limit: Int, myCursor: Int): [Job]
 }
 
 

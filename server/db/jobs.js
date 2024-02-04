@@ -5,6 +5,33 @@ export async function getJobs() {
     const jobs = await prisma.jobob.findMany();
     return jobs;
 }
+export async function getJobPages(limit, myCursor) {
+    let jobs = []
+    if(myCursor) {
+         jobs = await prisma.jobob.findMany({
+            take: limit,
+            skip: 1,
+            cursor: {
+                id: myCursor
+            },
+            orderBy: [
+                { 
+                    id: 'asc'
+                }
+            ]
+        });
+    } else {
+         jobs = await prisma.jobob.findMany({
+            take:limit,
+            orderBy: [
+                { 
+                    id: 'asc'
+                }
+            ]
+        });
+    }
+    return jobs;
+}
 
 export async function getJob(id) {
   

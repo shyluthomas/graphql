@@ -20,8 +20,6 @@ query  {
     }
   }`;
 
-
-
 export async function getJobs() {
     const query = gql`
     query  {
@@ -61,14 +59,18 @@ export async function getJob(id) {
     return data;
 }
 
-export const createJob = gql`
+export async function createJob({title, description}) {
+  const query = gql`
     mutation($title: String, $description: String) {
       createJob(title: $title, description: $description) {
         title
         description
       }
     } `;
-
+    return query;
+  // const data = await client.request(query, {title,description});
+  // return data;
+}
 
 export async function deleteJob(id) {
   const query = gql`
@@ -82,16 +84,3 @@ export async function deleteJob(id) {
   // const {data} = await apolloClient({query, id})
   return data;
 }
-
-export const getJobsPageQuery = gql`
-query($limit: Int, $myCursor: Int)  {
-  jobpages(limit: $limit, myCursor: $myCursor) {
-      id
-      title
-      description
-      date
-      company {
-        title
-      }
-    }
-  }`;

@@ -1,18 +1,18 @@
 import React from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
+// import * as yup from "yup"
+// import { yupResolver } from "@hookform/resolvers/yup"
 
-const schema = yup
-  .object({
-    username: yup.string().required(),
-    email: yup.string().required(),
-    dob: yup.string().required(),
-    sex: yup.string().required(),
-    password: yup.string().required(),
-    numbers: yup.string().required(),
-  })
-  .required();
+// const schema = yup
+//   .object({
+//     username: yup.string().required(),
+//     email: yup.string().required(),
+//     dob: yup.string().required(),
+//     sex: yup.string().required(),
+//     password: yup.string().required(),
+//     numbers: yup.string().required(),
+//   })
+//   .required();
 
 
 export default function Signup() {

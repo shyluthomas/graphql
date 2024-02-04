@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { createJob } from '../lib/graphql/queries';
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+import useCreateJob from '../hooks/jobsHook';
 
 const schema = yup
   .object({
@@ -13,8 +13,9 @@ const schema = yup
   .required();
 
 
-export default function CreateJob() {
+export default function CreateJob({updateJobs}) {
 const [status, setStatus] = useState('')
+const {mutate} = useCreateJob();
   const {
     register, 
     handleSubmit, 
@@ -24,14 +25,25 @@ const [status, setStatus] = useState('')
     resolver: yupResolver(schema)
    });
 
- 
+   function createJob(datas) {
+     const data =  mutate({
+        variables: {
+          title:datas.title,
+          description: datas.description
+        }
+      })
+      return data;
+   }
 
-   const onSubmit = async (data) => {
-    console.log(data)
-    const response = await createJob({title: data.title, description: data.description});
+   const onSubmit = (datas) => {
+    console.log(datas)
+   const response = createJob(datas);
+    
+    // const response = await createJob({title: data.title, description: data.description});
 
     if(response) {
       setStatus('Job has been created..')
+      updateJobs(response);
       reset();
     } else {
       setStatus('Job creation failed..')
@@ -63,7 +75,7 @@ const [status, setStatus] = useState('')
       
         <div className='flex p-4 w-full pb-4'>
             <button type='submit' className='bg-sky-500 p-2 text-white  delay-75'>
-              {isSubmitting ? "Loading.." : 'Signup' } 
+              {isSubmitting ? "Loading.." : 'Add Job' } 
             </button>
         </div>
         </form>

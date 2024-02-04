@@ -7,18 +7,18 @@ export default function Layout({children}) {
     <>
         <header className='border-b-2 border-neutral-300'>
             <nav className='bg-white flex'>
-                <div className='bg-zinc-600 max-w-screen-xl flex flex-wrap items-center mx-auto p-4 ml-4 mt-4 mb-4'>
-                    <p className='animate-bounce'>Logo</p>
+                <div className='bg-sky-600 text-white max-w-screen-xl flex flex-wrap items-center mx-auto p-4 ml-4 mt-4 mb-4 rounded'>
+                    <p className='animate-bounce'>GrapgQl</p>
                 </div>
                 <ul className='w-full p-4 mt-4 flex maright-l-auto space-x-5 justify-end'>
                     <li>
-                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-black hover:animate-pulse' href='#'> Home</a>
+                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-sky-600 hover:animate-pulse' href='/'> Hook Form</a>
                     </li>
                     <li> 
-                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-black hover:animate-pulse' href='#'>About</a>
+                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-sky-600 hover:animate-pulse' href='/jobs'>Jobs</a>
                     </li>
                     <li>
-                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-black hover:animate-pulse' href='#'>Contact</a>
+                        <a className='block p-3 text-white rounded border border-gray-50 backdrop-blur-sm bg-sky-600 hover:animate-pulse' href='/jobpages'>Job Paging</a>
                     </li>
                 </ul>
             </nav>
